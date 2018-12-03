@@ -1,1 +1,78 @@
 hello				
+#Naomi's Analysis portion
+#NUMBER OF DRAWS PROCESSED
+def drawsprocessed(lst):
+   count = len(lst)
+   return count
+dprocessed = drawsprocessed(lstout)
+print("The number of draws processed is:", dprocessed)
+#MAX JACKPOT
+def maxjackpot(lst, mx, mxdate):
+    for i in range(len(lst)):
+        #print("TRACE: jackpot - lst[i][8]:" ,lst[i][8], type(lst[i][8]))
+        #print("TRACE: date - lst[i][0]:", lst[i][0], type(lst[i][0]))
+        if(int(lst[i][8]) >= mx):
+            mx = int(lst[i][8])
+            mxdate = lst[i][0]
+    return mx, mxdate
+mx = 0
+mxdate =""
+mx, mxdate = maxjackpot(lstin, mx, mxdate)
+print("The maximum jackpot was:" , mx)
+print("The maxiumum jackpot was drawn on:", mxdate)
+#MAX AVERAGE
+def maxaverage(lst, mx, mxdate):
+    for i in range(len(lst)):
+        #print("TRACE: jackpot - lst[i][6]:" ,lst[i][6], type(lst[i][6]))
+        #print("TRACE: date - lst[i][0]:", lst[i][0], type(lst[i][0]))
+        if(lst[i][6] >= mx):
+            mx = lst[i][6]
+            mxdate = lst[i][0]
+    return mx, mxdate
+mx = 0
+mxdate =""
+mx, mxdate = maxaverage(lstout, mx, mxdate)
+print("The maximum average won was:" , mx)
+print("The maxiumum average won was drawn on:", mxdate)
+#INDIVIDUAL DISTRIBUTION
+def range43(lst, lst5):
+    k = -1
+    while k <= 43:
+        for i in range(len(draws_number)):
+            if(lst[i] == (k+6)):
+                lst5[k] += 1
+        k +=1
+    return lst5
+
+draws_number = [6,6,34,56,7,45,45,45,3,3,3,6,6,6]
+lst43 = [0]*44
+lstof43 = range43(draws_number, lst43)
+print("TRACE: draws_number processed:", draws_number)
+print("TRACE: need to input correct draws_number variable")
+print("The number of each times each number was drawn:")
+print(lstof43)
+#RANGE DISTRIBUTION
+def range5(lst, lst5):
+    k = 0
+    while k <= 4:
+        for i in range(len(draws_number)):
+            if(lst[i] > (k)*10) and (lst[i] <= (k+1)*10):
+                lst5[k] = lst5[k] + 1
+        k = k+1
+    return lst5
+lst5 = [0]*5
+lstof5 = range5(draws_number, lst5)
+print("TRACE: draws_number processed:", draws_number)
+print("TRACE: need to input correct draws_number variable")
+print("The numbers in each range:(0,10], (10,20], (20,30], (30,40], (40,50)")
+print(lstof5)
+#6 MOST FREQUENT NUMBERS
+from collections import Counter
+cnt = Counter(draws_number).most_common(6)
+print("TRACE: lol of highest freq", cnt)
+def freq6(lst):
+   for i in range(len(lst)):
+      print("Number", lst[i][0], "was drawn", lst[i][1], "times.")
+   return
+print("The six most frequently drawn numbers were:")
+freq6(cnt)
